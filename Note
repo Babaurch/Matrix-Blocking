@@ -1,0 +1,33 @@
+Problem Statement:
+
+You have two matrices A and B of sizes n x n and need to compute their product C = A x B. Can you come up with an algorithm that can parallelize this computation to take advantage of multiple processors or cores? What is the theoretical limit of speedup you can achieve with this approach?
+
+
+Solution:
+
+To parallelize the computation of the product of the two matrices A and B to take advantage of multiple processors or cores, an approcah called "Matrix Blocking" can be applied.
+In Matrix Blocking the matrices (A & B) are divided into smaller sub-matrix, and each sub-matrix multiplication is assigned to a different processor or core.
+
+
+below is an algorithm that can parallelize the computation of the product of two matrices A and B using the matrix blocking technique approach:
+
+
+1. Divide A and B into smaller sub-matrices of size k x k, where k is a block size that can fit into the processor's cache memory.
+
+2. Create a shared matrix C with the same size as A and B.
+
+3. For each sub-matrix pair (A[i,j], B[j,k]), do the following in parallel:
+
+   a. Multiply the sub-matrices A[i,j] and B[j,k] to generate a sub-matrix C[i,k].
+
+4. Combine the sub-matrices of C into the final matrix C.
+
+5. Return the final matrix C.
+
+the Javascript Code can be found here => [["matrixBlocking.js"]],
+
+
+
+
+The theoretical limit of speedup that can be achieved with this approach is proportional to the number of processors or cores used. 
+Example: If the total number of processors used is 30, then the maximum speedup that can be achived is 30.
